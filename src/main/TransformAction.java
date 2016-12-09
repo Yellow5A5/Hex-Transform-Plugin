@@ -9,8 +9,20 @@ import main.View.CalculatorView;
  */
 public class TransformAction extends AnAction {
 
+    CalculatorView mCalculatorView;
+
     @Override
     public void actionPerformed(AnActionEvent e) {
-        new CalculatorView();
+        if (mCalculatorView != null && !mCalculatorView.isVisible()){
+            mCalculatorView.setVisible(true);
+        }else {
+            mCalculatorView = new CalculatorView();
+        }
+    }
+
+    @Override
+    public void update(AnActionEvent e) {
+        super.update(e);
+
     }
 }

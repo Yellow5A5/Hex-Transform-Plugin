@@ -5,6 +5,8 @@ import main.Util.TransformerUtil;
 import org.apache.http.util.TextUtils;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 /**
  * Created by Yellow5A5 on 16/9/28.
@@ -41,6 +43,7 @@ public class CalculatorView extends JDialog {
         mTransformComboBox.addItem(TransformerConstant.OCTAL_TRANSFOR);
         mTransformComboBox.addItem(TransformerConstant.DECIMAL_TRANSFOR);
         mTransformComboBox.addItem(TransformerConstant.HEX_TRANSFOR);
+        mTransformText.setText("快捷键:Shift+Enter");
     }
 
     private void initUtil() {
@@ -65,9 +68,10 @@ public class CalculatorView extends JDialog {
 
         mConfirmButton.addActionListener(e -> {
             String input = mOriginalText.getText();
-            String targetNum = mTransUtil.setTransformType((String) mOriginalComboBox.getSelectedItem(), (String) mTransformComboBox.getSelectedItem())
+            String targetNum = mTransUtil
+                    .setTransformType((String) mOriginalComboBox.getSelectedItem(), (String) mTransformComboBox.getSelectedItem())
                     .transformTargetTo(input);
-            mTransformText.setText(targetNum);
+                mTransformText.setText(targetNum);
         });
     }
 
@@ -89,5 +93,37 @@ public class CalculatorView extends JDialog {
 
     public String getTargetType() {
         return mTargetType;
+    }
+
+    @Override
+    protected void processKeyEvent(KeyEvent e) {
+        super.processKeyEvent(e);
+    }
+
+    @Override
+    protected JRootPane createRootPane(){
+        KeyStroke  keyEsc = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0);
+        KeyStroke  keyEnter = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER,0);
+        KeyStroke  keyShift = KeyStroke.getKeyStroke(KeyEvent.VK_SHIFT,0);
+        KeyStroke keyShiftEnter = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, InputEvent.SHIFT_MASK);
+        JRootPane rootPane = new JRootPane();
+        rootPane.setOpaque(true);
+        rootPane.registerKeyboardAction(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (mConfirmButton != null){
+                    mConfirmButton.doClick();
+                }
+            }
+        }, keyShiftEnter, JComponent.WHEN_IN_FOCUSED_WINDOW);
+
+        rootPane.registerKeyboardAction(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+            }
+        }, keyEsc, JComponent.WHEN_IN_FOCUSED_WINDOW);
+        return rootPane;
     }
 }

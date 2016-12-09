@@ -33,7 +33,7 @@
     <action id="HexTransformPlugin.main.TransformAction" class="main.TransformAction" text="Transform-Plugin"
             description="A plugin can help you to reset the formats of number.">
       <add-to-group group-id="WindowMenu" anchor="first"/>
-      <keyboard-shortcut keymap="$default" first-keystroke="meta p"/>
+      <keyboard-shortcut keymap="$default" first-keystroke="meta alt p"/>
     </action>
   </actions>
 
