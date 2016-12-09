@@ -103,8 +103,6 @@ public class CalculatorView extends JDialog {
     @Override
     protected JRootPane createRootPane(){
         KeyStroke  keyEsc = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0);
-        KeyStroke  keyEnter = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER,0);
-        KeyStroke  keyShift = KeyStroke.getKeyStroke(KeyEvent.VK_SHIFT,0);
         KeyStroke keyShiftEnter = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, InputEvent.SHIFT_MASK);
         JRootPane rootPane = new JRootPane();
         rootPane.setOpaque(true);

@@ -1,7 +1,7 @@
 <idea-plugin version="2">
   <id>com.yellow5a5</id>
   <name>HexTransformPlugin</name>
-  <version>1.0</version>
+  <version>1.1</version>
   <vendor email="scnu.hww@foxmail.com" url="https://github.com/Yellow5A5">Yellow5A5</vendor>
 
   <description><![CDATA[
@@ -10,8 +10,11 @@
     ]]></description>
 
   <change-notes><![CDATA[
-      1.0.0 Version Finish.<br>
-      <em>/em>
+      1.0 Version:<br>Finish.<br>
+      1.1 Version:<br>Add keyListener.<br>
+          - turnback key: ESC.<br>
+          - Confirm     : SHIFT+ENTER.
+      <em></em>
     ]]>
   </change-notes>
 
